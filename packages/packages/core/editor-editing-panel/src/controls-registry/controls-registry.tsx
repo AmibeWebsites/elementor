@@ -1,5 +1,6 @@
 import {
 	type ControlComponent,
+	DisplayConditionsControl,
 	HtmlTagControl,
 	ImageControl,
 	KeyValueControl,
@@ -19,6 +20,7 @@ import {
 import { type ControlLayout } from '@elementor/editor-elements';
 import {
 	booleanPropTypeUtil,
+	displayConditionsPropTypeUtil,
 	imagePropTypeUtil,
 	imageSrcPropTypeUtil,
 	keyValuePropTypeUtil,
@@ -54,6 +56,11 @@ const controlTypes = {
 	'key-value': { component: KeyValueControl, layout: 'full', propTypeUtil: keyValuePropTypeUtil },
 	'html-tag': { component: HtmlTagControl, layout: 'two-columns', propTypeUtil: stringPropTypeUtil },
 	toggle: { component: ToggleControl, layout: 'full', propTypeUtil: stringPropTypeUtil },
+	'display-conditions': {
+		component: DisplayConditionsControl,
+		layout: 'two-columns',
+		propTypeUtil: displayConditionsPropTypeUtil,
+	},
 } as const satisfies ControlRegistry;
 
 export type ControlType = keyof typeof controlTypes;

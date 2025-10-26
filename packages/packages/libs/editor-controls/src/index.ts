@@ -33,6 +33,7 @@ export { TransitionRepeaterControl } from './controls/transition-control/transit
 export { PopoverContent } from './components/popover-content';
 export { enqueueFont } from './controls/font-family-control/enqueue-font';
 export { transitionProperties, transitionsItemsList } from './controls/transition-control/data';
+export { DisplayConditionsControl } from './controls/display-conditions-control';
 
 // components
 export { ControlFormLabel } from './components/control-form-label';

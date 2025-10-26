@@ -12,9 +12,17 @@ type Props = PropsWithChildren< {
 	defaultExpanded?: boolean;
 	titleEnd?: CollapsibleValue< ReactNode | string >;
 	unmountOnExit?: boolean;
+	showTitle?: boolean;
 } >;
 
-export function Section( { title, children, defaultExpanded = false, titleEnd, unmountOnExit = true }: Props ) {
+export function Section( {
+	title,
+	children,
+	defaultExpanded = false,
+	titleEnd,
+	unmountOnExit = true,
+	showTitle = true,
+}: Props ) {
 	const [ isOpen, setIsOpen ] = useStateByElement( title, !! defaultExpanded );
 	const ref = useRef< HTMLElement >( null );
 
@@ -28,23 +36,29 @@ export function Section( { title, children, defaultExpanded = false, titleEnd, u
 
 	return (
 		<>
-			<ListItemButton
-				id={ labelId }
-				aria-controls={ contentId }
-				aria-label={ `${ title } section` }
-				onClick={ handleClick }
-				sx={ { '&:hover': { backgroundColor: 'transparent' } } }
-			>
-				<Stack direction="row" alignItems="center" justifyItems="start" flexGrow={ 1 } gap={ 0.5 }>
-					<ListItemText
-						secondary={ title }
-						secondaryTypographyProps={ { color: 'text.primary', variant: 'caption', fontWeight: 'bold' } }
-						sx={ { flexGrow: 0, flexShrink: 1, marginInlineEnd: 1 } }
-					/>
-					{ getCollapsibleValue( titleEnd, isOpen ) }
-				</Stack>
-				<CollapseIcon open={ isOpen } color="secondary" fontSize="tiny" />
-			</ListItemButton>
+			{ showTitle && (
+				<ListItemButton
+					id={ labelId }
+					aria-controls={ contentId }
+					aria-label={ `${ title } section` }
+					onClick={ handleClick }
+					sx={ { '&:hover': { backgroundColor: 'transparent' } } }
+				>
+					<Stack direction="row" alignItems="center" justifyItems="start" flexGrow={ 1 } gap={ 0.5 }>
+						<ListItemText
+							secondary={ title }
+							secondaryTypographyProps={ {
+								color: 'text.primary',
+								variant: 'caption',
+								fontWeight: 'bold',
+							} }
+							sx={ { flexGrow: 0, flexShrink: 1, marginInlineEnd: 1 } }
+						/>
+						{ getCollapsibleValue( titleEnd, isOpen ) }
+					</Stack>
+					<CollapseIcon open={ isOpen } color="secondary" fontSize="tiny" />
+				</ListItemButton>
+			) }
 			<Collapse
 				id={ contentId }
 				aria-labelledby={ labelId }
