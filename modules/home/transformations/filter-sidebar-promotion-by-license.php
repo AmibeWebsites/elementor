@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Filter_Sidebar_Promotion_By_License extends Transformations_Abstract {
 
 	public function transform( array $home_screen_data ): array {
+		return $home_screen_data;
+		
 		if ( ! EditorAssetsAPI::has_valid_nested_array( $home_screen_data, [ 'sidebar_promotion_variants' ] ) ) {
 			return $home_screen_data;
 		}
