@@ -321,14 +321,14 @@ class App extends BaseApp {
 			}
 
 			// Kit library is depended on import-export
-			$this->add_component( 'kit-library', new KitLibraryModule() );
+//			$this->add_component( 'kit-library', new KitLibraryModule() );
 		}
 
-		if ( $this->is_e_onboarding_active() ) {
-			$this->add_component( 'e-onboarding', new EOnboardingModule() );
-		} else {
-			$this->add_component( 'onboarding', new OnboardingModule() );
-		}
+//		if ( $this->is_e_onboarding_active() ) {
+//			$this->add_component( 'e-onboarding', new EOnboardingModule() );
+//		} else {
+//			$this->add_component( 'onboarding', new OnboardingModule() );
+//		}
 
 		add_action( 'elementor/editor-one/menu/register', function ( Menu_Data_Provider $menu_data_provider ) {
 			$this->register_editor_one_menu( $menu_data_provider );
